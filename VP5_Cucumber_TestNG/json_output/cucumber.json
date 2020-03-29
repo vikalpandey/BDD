@@ -1,0 +1,92 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 19444096900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.initDriver()"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "Open avitusenet aplcation \u0026 validate the text boxes",
+        "description": "",
+        "id": "validate-the-home-page-of-avitusnet;open-avitusenet-aplcation-\u0026-validate-the-text-boxes",
+        "after": [
+          {
+            "result": {
+              "duration": 1424421100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.TearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 575321500,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "User is present on login page of avituent website",
+            "match": {
+              "location": "Homepage.user_is_present_on_login_page_of_avituent_website()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 606451300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "User fill username",
+            "match": {
+              "location": "Homepage.User_fill_username()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 173093900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User fill password",
+            "match": {
+              "location": "Homepage.User_fill_password()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 42557000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User verify the login button is present or not in loginpage",
+            "match": {
+              "location": "Homepage.user_verify_the_login_button_is_present_or_not_in_loginpage()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Validate the home page of avitusnet",
+    "description": "Validate the home page of avitusnet applicateion",
+    "id": "validate-the-home-page-of-avitusnet",
+    "keyword": "Feature",
+    "uri": "Features/Homepage.feature"
+  }
+]
