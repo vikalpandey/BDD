@@ -378,7 +378,7 @@ public class Common extends TestBase{
 		driver.findElement(by).click();
 		Assert.assertTrue(true, "Element" + by + "is not clicked on the application");
 		} catch (Exception e) {
-			System.out.println("VP= some exception is comming in clicking the element");
+			System.out.println("VP= some exception is comming in clicking the element and exceptin is =" +e);
 		}
 	}
 	
