@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -75,7 +76,7 @@ public class Common extends TestBase{
 //		}
 //	}
 	
-///Wait Start /////////////	
+//---------------     Wait Start 	
 
 	// Wait------------------------------------------
 	public static void waitForElementvisible(WebDriver driver, By locator) {
@@ -87,7 +88,6 @@ public class Common extends TestBase{
 			// locator);
 		} catch (Exception e) {
 			String timeOutMessage = "common class= timeout msg element not found" + locator;
-			// TODO: handle exception
 			throw new IllegalStateException(timeOutMessage);
 		}
 	}
@@ -98,6 +98,7 @@ public class Common extends TestBase{
 			WebDriverWait wait = new WebDriverWait(driver, 40);
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 
@@ -136,7 +137,7 @@ public class Common extends TestBase{
 	// -----------Loader ------ JS-- Wait For Page To Load – Method #2
 
 	public static void waitForLoad(WebDriver driver) {
-		System.out.println("waitForLoad started");
+		//System.out.println("waitForLoad started");
 		ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {
 				return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
@@ -153,7 +154,42 @@ public class Common extends TestBase{
 			throw new Exception(E.getMessage());
 		}
 	}
-
+//Tools QA  -: Wait for Ajax call to finish
+//https://www.toolsqa.com/selenium-cucumber-framework/handle-ajax-call-using-javascriptexecutor-in-selenium/
+	
+	public static void waituntilJqueryIsDone(WebDriver driver, Long timeoutInSeconds){ // ex -:time =60L 
+		until(driver, (d) ->
+			{
+			Boolean isJqueryCallDone = (Boolean)((JavascriptExecutor) driver).executeScript("return jQuery.active==0");
+			if (!isJqueryCallDone) System.out.println("JQuery call is in Progress");
+			return isJqueryCallDone;
+			}, timeoutInSeconds);
+	}
+	
+	
+	
+	private static void until(WebDriver driver, Function<WebDriver, Boolean> waitCondition, Long timeoutInSeconds){
+		WebDriverWait webDriverWait = new WebDriverWait(driver, timeoutInSeconds);
+		webDriverWait.withTimeout(timeoutInSeconds, TimeUnit.SECONDS);
+		try{
+			webDriverWait.until(waitCondition);
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}          
+	}
+	
+//Tools QA -:   Wait for Page Load using JavaScriptExecutor in Selenium
+	public static void waituntilPageLoadComplete(WebDriver driver, Long timeoutInSeconds){
+		until(driver, (d) ->
+			{
+				Boolean isPageLoaded = (Boolean)((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+				if (!isPageLoaded) System.out.println("Document is loading");
+				return isPageLoaded;
+			}, timeoutInSeconds);
+	}
+	
+///////////Tools qa wait end here 
+	
 	public static void shortwait3(WebDriver driver) {
 		try {
 			Thread.sleep(3000);
@@ -239,6 +275,82 @@ public class Common extends TestBase{
 		String value = values.get(0).getText();
 		return value;
 	}
+	
+	//...... select text from the list, like from autocomplete text box   ..
+	//https://www.seleniumeasy.com/selenium-tutorials/working-with-ajax-or-jquery-auto-complete-text-box-using-webdriver
+		public static void selectOptionWithText(String textToSelect , By AutoCompletelistbox) {
+			try {
+				                 //WebElement autoOptions = driver.findElement(By.id("AutoComplete_listbox"));
+				//By AutoCompletelistbox=By.id("AutoComplete_listbox");
+				Common.waitForElementvisible(driver, AutoCompletelistbox);
+				                //wait.until(ExpectedConditions.visibilityOf(autoOptions));
+				List<WebElement> optionsToSelect=driver.findElements(By.tagName("li"));
+
+				                 //List<WebElement> optionsToSelect = autoOptions.findElements(By.tagName("li"));
+				for(WebElement option : optionsToSelect){
+			        if(option.getText().equals(textToSelect)) {
+			        	System.out.println("Trying to select: "+textToSelect);
+			            option.click();
+			            break;
+			        }
+			    }
+			} catch (NoSuchElementException e) {
+				System.out.println(e.getStackTrace());
+			}
+			catch (Exception e) {
+				System.out.println(e.getStackTrace());
+			}
+		}
+		
+		
+		public static void selectOptionWithIndex(int indexToSelect, By locator_AutoCompletelistbox,By locator_li_list) {
+			
+			try {
+				//WebElement autoOptions = driver.findElement(By AutoCompletelistbox);
+				//wait.until(ExpectedConditions.visibilityOf(autoOptions));
+				Common.waitForElementvisible(driver, locator_AutoCompletelistbox);
+				System.out.println(" (inside selectOptionWithIndex method) and waiting for "+locator_AutoCompletelistbox );
+
+				//List<WebElement> optionsToSelect = autoOptions.findElements(By.tagName("li"));
+				List<WebElement> optionsToSelect_list=driver.findElements(locator_li_list);
+				System.out.println("print optionsToSelect_list.size= "+optionsToSelect_list.size());
+			        if(indexToSelect<=optionsToSelect_list.size()) {
+			        	System.out.println("Trying to select based on index: "+indexToSelect);
+			        	Thread.sleep(2000);
+			           optionsToSelect_list.get(indexToSelect).click();
+			           Thread.sleep(2000);
+			       
+			        }
+			} 		
+			catch ( Exception e) {
+				System.out.println(e);
+			}
+		}
+		//>>>>>>>>>>>>>>>>>>>>>>>>>>
+public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoCompletelistbox,By locator_li_list) {
+			
+			try {
+				WebElement autoOptions = driver.findElement( locator_AutoCompletelistbox);
+				waitForElementvisible(driver, locator_AutoCompletelistbox);
+				//  Common.waitForElementvisible(driver, AutoCompletelistbox);
+				
+				List<WebElement> optionsToSelect_list =autoOptions.findElements(locator_li_list);
+				//List<WebElement> optionsToSelect = autoOptions.findElements(By.tagName("li"));
+				//List<WebElement> optionsToSelect_list=driver.findElements(By.tagName("li"));
+			        if(indexToSelect<=optionsToSelect_list.size()) {
+			        	System.out.println("Trying to select based on index: "+indexToSelect);
+			        	Thread.sleep(2000);
+			           optionsToSelect_list.get(indexToSelect).click();
+			           Thread.sleep(2000);
+			       
+			        }
+			} 		
+			catch ( Exception e) {
+				System.out.println(e);
+			}
+		}
+		//>>>>>>>>>>>>
+	
 
 	// -----------Take Snapshot for analysing the failures
 	public String TakeSnapshot(WebDriver driver, String DestFilePath) throws IOException {
@@ -367,7 +479,7 @@ public class Common extends TestBase{
 		driver.findElement(by).sendKeys(value);
 		Assert.assertTrue(true, "value" + value + "is not entered in the " + by + "field");	
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("some exception coming in send keys method = "+e);
 		}
 	}
 	public static void click(By by)
