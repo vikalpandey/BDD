@@ -86,6 +86,7 @@ public class LoginPage_steps extends TestBase {
 				// Click on the Sign In Button
 				WebElement signin = driver.findElement(By.xpath(Util.Utility.fetchlocatorvalue("login_loginbutton_xpath")));
 				signin.click();
+				log.info("sign in by ca1 user done ");
 				Util.Common.waitForLoad(driver);
 				System.out.println("Login with ca1 done ");
 				} catch (Exception e) {

@@ -47,7 +47,7 @@ public class Hooks extends TestBase {
 		try {
 			driver.quit();
 		} catch (Exception e) {
-			System.out.println("some exception occurred while quitting the browser");
+			System.out.println("some exception occurred while quitting the browser= "+e);
 		}
 
 		// this reporter class will write the text in extent report

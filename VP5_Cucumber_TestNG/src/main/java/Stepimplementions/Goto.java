@@ -2,9 +2,7 @@ package Stepimplementions;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import com.google.common.base.Predicate;
+import com.cucumber.listener.Reporter;
 import Util.Common;
 import Util.TestBase;
 import Util.Utility;
@@ -12,13 +10,15 @@ import Util.Utility;
 
 public class Goto extends TestBase {
 	
+	
 //		WebDriver driver;
-//		public Goto(WebDriver driver)
-// create a constructor for passing the webdriver object to all methods
-//		{ // jo bhi is class ka object banayega vo driver pass karega
-//			this.driver = driver; // passing this driver value to global driver
-//									// variable
+//		public Goto(WebDriver driver)                        
+//		{ 
+//			this.driver = driver; 
 //		}
+//create a constructor for passing the webdriver object to all methods
+// jo bhi is class ka object banayega vo driver pass karega
+// passing this driver value to global driver variable
 
 		public void admintab() throws Exception {
 			Common.waitForLoad(driver);
@@ -35,8 +35,8 @@ public class Goto extends TestBase {
 			System.out.println("goto class method completed = clicked on self tab ");
 		}
 		public void s_dashboard() throws Exception {
-			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s__dashboard_xpath")));
-			driver.findElement(By.xpath(Utility.fetchlocatorvalue("s__dashboard_xpath"))).click();
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_dashboard_xpath")));
+			driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_dashboard_xpath"))).click();
 			System.out.println("goto class method completed = clicked on self dashboard ");
 		}
 		
@@ -160,8 +160,7 @@ public class Goto extends TestBase {
 			System.out.println("goto class method completed  = admin_Employee_W2Form   ");
 			
 			} catch (Exception e) {
-				System.out.println("exception =" + e);
-				System.out.println("some exception occour in go to class - admin_Employee_W2Form");
+				System.out.println("exception in goto - admin_Employee_W2Form =" + e);
 			}
 			
 		}
@@ -177,10 +176,38 @@ public class Goto extends TestBase {
 		} catch (Exception e) {
 			System.out.println("exception ="+ e);
 			System.out.println("some exception occour in go to class - admin_Employee_PayStub");
-		}
-			
+		}	
 		}	
 		
+		public void admin_EmployeeSeparation_NewSeparationForm() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waituntilPageLoadComplete(driver, 20L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_NewSeparationForm_xpath"))));
+			Common.waitForLoad(driver);
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_NewSeparationForm_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = admin_EmployeeSeparation_NewSeparationForm   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto admin_EmployeeSeparation_NewSeparationForm  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}	
+		
+		public void admin_EmployeeSeparation_SeparationHistoryReport() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_SeparationHistoryReport_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("a_EmployeeSeparation_SeparationHistoryReport_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = admin_EmployeeSeparation_SeparationHistoryReport   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto admin_EmployeeSeparation_SeparationHistoryReport  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}	
 		
 		
 		public void Preferences_page() throws Exception {
@@ -194,6 +221,7 @@ public class Goto extends TestBase {
 		}	
 		
 		public void SignOut() throws Exception {
+			try {
 			Common.waitForLoad(driver);
 			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("Preferences_usericon")));
 			driver.findElement(By.xpath(Utility.fetchlocatorvalue("Preferences_usericon"))).click();
@@ -201,20 +229,204 @@ public class Goto extends TestBase {
 			driver.findElement(By.xpath(Utility.fetchlocatorvalue("SignOut_button"))).click();
 			Common.waitForPageLoaded(driver);
 			System.out.println("goto class method completed  = SignOut   ");
+			
+			} catch (Exception e) {
+				System.out.println("exception in goto SignOut  = "+ e);
+			}
 		
 		}
 		
+		public void s_Announcements_Announcement_List() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Announcements_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Announcements_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Announcements_AnnouncementList_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Announcements_AnnouncementList_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_Announcements_Announcement_List   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_Announcements_Announcement_List  = "+ e);
+//			System.out.println("1  print only e= " +e); // o/p =  print only e= java.lang.NullPointerException
+//			System.out.println("2 print e.getmessage="+ e.getMessage());  // o/p = 2 print e.getmessage=null
+//			System.out.println("3 print e.tostring=" + e.toString());   // o/p = 3 print e.tostring=java.lang.NullPointerException
+//			System.out.println("4 belos is e.printstacktrace");
+//			e.printStackTrace();
+
+		}			}
+		
+		
 		public void s_Employee_My_Details() throws Exception {
+			try {
 			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Employee_xpath")));
 			Common.action(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_xpath"))));
 			Thread.sleep(3000);
 			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Employee_MyDetails_xpath")));
 			driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_MyDetails_xpath"))).click();
-
+			Common.waituntilPageLoadComplete(driver, 60L);
 			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Employee_MyDetails_breadcrumb_xpath")));
 			System.out.println("goto class method completed  = s_Employee_My_Details   ");
+			
+			} catch (Exception e) {
+				System.out.println("exception in goto s_Employee_My_Details  = "+ e);
+				Reporter.addStepLog("exception =" +e);
+			}
 		}
-
+		
+		public void s_Employee_W2form() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Employee_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_W2form_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Employee_W2form_breadcrumb_xpath")));
+			Common.flash(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_W2form_breadcrumb_xpath"))));
+			System.out.println("goto class method completed  = s_Employee_W2form   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_Employee_W2form  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}	
+		public void s_Employee_paystub() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Employee_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_paystub_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Employee_paystub_breadcrumb_xpath")));
+			Common.flash(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Employee_paystub_breadcrumb_xpath"))));
+			System.out.println("goto class method completed  = s_Employee_paystub   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_Employee_paystub  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}	
+	
+		public void s_Settings() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Settings_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Settings_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Settings_Change_PasswordPIN_xpath"))));
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Settings_Change_PasswordPIN_breadcrumb_xpath")));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.flash(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Settings_Change_PasswordPIN_breadcrumb_xpath"))));
+			System.out.println("goto class method completed  = s_Settings   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_Settings  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}	
+		
+		public void s_changerequestdetails() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_ChangeRequest_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_ChangeRequest_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_ChangeRequest_ChangeRequestDetails_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_ChangeRequest_ChangeRequestDetails_breadcrumb_xpath")));
+			//Common.flash(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_ChangeRequest_ChangeRequestDetails_breadcrumb_xpath"))));
+			System.out.println("goto class method completed  = s_changerequestdetails   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_changerequestdetails  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}	
+		
+		public void s_pto_ptosummary() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_PTO_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_PTO_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_PTO_ptosummary_xpath"))));
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_PTO_ptosummary_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_pto_ptosummary   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_pto_ptosummary  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}
+		public void s_pto_ptorequest() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_PTO_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_PTO_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_PTO_ptorequest_xpath"))));
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_PTO_ptorequest_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_pto_ptorequest   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_pto_ptorequest  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}
+		public void s_pto_ptorequest_history() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_PTO_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_PTO_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_PTO_ptorequesthistory_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_PTO_ptorequesthistory_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_pto_ptorequest_history   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_pto_ptorequest_history  = "+ e);
+			Reporter.addStepLog("exception =" +e);
+		}			}
+		
+		public void s_Trainings_traningsummary() throws Exception {
+			try {
+		
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Trainings_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Trainings_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Trainings_traningsummary_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Trainings_traningsummary_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_Trainings_traningsummary   ");
+			} catch (Exception e) {
+				System.out.println("exception in goto s_Trainings_traningsummary  = "+ e);
+				Reporter.addStepLog("exception = " +e);
+			}			}
+		
+		public void s_Onlinesupport_GenerateTicket() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_GenerateTicket_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_GenerateTicket_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_Onlinesupport_GenerateTicket   ");
+			} catch (Exception e) {
+				System.out.println("exception in goto s_Onlinesupport_GenerateTicket  = "+ e);
+				Reporter.addStepLog("exception = " +e);
+				Reporter.addScenarioLog("exception  in s_Onlinesupport_GenerateTicket =" +e );
+				
+				
+			}		}
+		
+		public void s_Onlinesupport_ticktstatus() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_ticktstatus_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_Onlinesupport_ticketstatus_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_Onlinesupport_ticktstatus   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_Onlinesupport_ticktstatus  = "+ e);
+		}			}
+		public void s_Document_mydocument() throws Exception {
+			try {
+			Common.waitForLoad(driver);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_DocumentFAQs_xpath")));
+			Common.actionclick(driver, driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_DocumentFAQs_xpath"))),
+					driver.findElement(By.xpath(Utility.fetchlocatorvalue("s_DocumentFAQs_mydocument_xpath"))));
+			Common.waituntilPageLoadComplete(driver, 60L);
+			Common.waitForElementvisible(driver, By.xpath(Utility.fetchlocatorvalue("s_DocumentFAQs_mydocument_breadcrumb_xpath")));
+			System.out.println("goto class method completed  = s_Document_mydocument   ");
+		} catch (Exception e) {
+			System.out.println("exception in goto s_Document_mydocument  = "+ e);
+		}			}
+		
 		
 		
 	}

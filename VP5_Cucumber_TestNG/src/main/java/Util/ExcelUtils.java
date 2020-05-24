@@ -10,6 +10,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 
+	// i used these jar for this code org.apache.poi poi 3.15 
+	//org.apache.poi  poi-ooxml 3.15
+	
 	
 	private static XSSFSheet ExcelWSheet;
 	private static XSSFWorkbook ExcelWBook;
@@ -47,7 +50,8 @@ public static String getCellData(int RowNum, int ColNum) throws Exception{
 public static void setCellData(String Result,  int RowNum, int ColNum) throws Exception	{
 		try{
 			Row  = ExcelWSheet.getRow(RowNum);
-		Cell = Row.getCell(ColNum, Row.RETURN_BLANK_AS_NULL);
+		//Cell = Row.getCell(ColNum, Row.RETURN_BLANK_AS_NULL); // VP this is depreciated methods used so i removed it 
+		Cell=Row.getCell(ColNum);
 		//Cell = Row.getCell(ColNum, Row.RE);
 		if (Cell == null) {
 			Cell = Row.createCell(ColNum);

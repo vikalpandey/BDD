@@ -11,11 +11,13 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 //@RunWith(Cucumber.class) // this is for junit 
 @CucumberOptions(
-		features="classpath:Features/E_Employee_MyDetails.feature", // path of feature
+		// you can also define the name of scenario using name  test it 
+		//features="classpath:Features/Goto_all_pages.feature", 
+				features="classpath:Features ", // i am using @vikal tag for running perticular feature
+		//features="classpath:Features/E_Employee_MyDetails.feature", // path of feature for run only 1 feature file 
 		//features="E:/2 Selenium/Z Eclipse new Java/VP5_Cucumber_TestNG/src/main/java/Features/E_Employee_MyDetails.feature",
-		
 		glue={"Stepdefinitions"},// path of step def files
-		plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},
+		plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},// Extent report plugin
 		strict=false,    // it will check if any step is not defined in stepdef file  
 		monochrome = true, // display the console output in readable format 
 		tags = {"@vikal"},// @smoketest,@Regressiontest -- execute all test whic are tagged as @smaketest OR @regressiontest

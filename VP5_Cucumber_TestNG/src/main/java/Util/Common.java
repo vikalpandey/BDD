@@ -349,7 +349,35 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 				System.out.println(e);
 			}
 		}
-		//>>>>>>>>>>>>
+		
+//-----                Calander       ---------
+// Function to select the day of the month in the date time picker.
+//https://www.techbeamers.com/handle-date-time-picker-control-using-webdriver/
+	public static void HandleKendoDateTimePicker_Calander(String day,By locator_day)
+			throws InterruptedException {
+
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.className("k-content")));
+		Common.waitForElementvisible(driver, locator_day);
+		
+		//WebElement table = browser.findElement(By.className("k-link"));
+		WebElement table=driver.findElement(locator_day);
+		System.out.println("inside Kendo Calendar");
+		
+		List<WebElement> tableRows = table.findElements(By.xpath("//tr"));
+		for (WebElement row : tableRows) {
+			List<WebElement> cells = row.findElements(By.xpath("td"));
+
+			for (WebElement cell : cells) {
+				if (cell.getText().equals(day)) {
+					driver.findElement(By.linkText(day)).click();
+				}
+			}
+		}
+		Thread.sleep(2000);
+	}
+
+
+
 	
 
 	// -----------Take Snapshot for analysing the failures
@@ -691,7 +719,7 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 	/*
 	 * This method is used to get text field value
 	 */
-	public String getTextTxtFld(WebDriver driver, WebElement element) throws Exception {
+	public String getTextTxtFldvalue(WebDriver driver, WebElement element) throws Exception {
 		String txt = null;
 		moveToElement(driver, element);
 		try {
@@ -765,6 +793,8 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 		String date = arraydate[0];
 		return date;
 	}
+	
+	
 	
 	
 	

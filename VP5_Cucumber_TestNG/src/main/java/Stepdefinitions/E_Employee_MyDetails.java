@@ -93,7 +93,7 @@ public class E_Employee_MyDetails extends TestBase {
 	@Then("^Pick routing no from excel & paste in routing no and validate and update in excel$")
 	public void pick_routing_no_from_excel_paste_in_routing_no_and_validate_and_update_in_excel() throws Throwable {
 		ExcelUtils.setExcelFile(Constant.Path_TestData + Constant.File_TestData, "All");
-		for (int i = 4; i < 8; i++) {
+		for (int i = 1; i < 8; i++) {
 			System.out.println("inside for loop and i =" +i);
 			String celldataroutingno    =ExcelUtils.getCellData(i, 0);
 			mydetailsobj.Fill_BankRoutingNumberfromexcel(celldataroutingno);
