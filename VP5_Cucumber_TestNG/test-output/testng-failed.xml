@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Stepimplementions.Testclass">
+      <class name="Stepimplementions.Learning.ActionAPI_Mouse_Keyboard">
         <methods>
           <include name="Testmethod"/>
         </methods>
-      </class> <!-- Stepimplementions.Testclass -->
+      </class> <!-- Stepimplementions.Learning.ActionAPI_Mouse_Keyboard -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

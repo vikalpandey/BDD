@@ -50,6 +50,7 @@ public class Common extends TestBase{
 		act.moveToElement(locator).build().perform();
 		// where we call this method then we move to submenu using
 		// driver.fin.submenu.click etc..
+		//Note= .perform() or build().perform() = doing the same thing 
 	}
 
 	public static void actionclick(WebDriver driver, WebElement Locator, WebElement submenu) throws Exception {
@@ -77,6 +78,11 @@ public class Common extends TestBase{
 //	}
 	
 //---------------     Wait Start 	
+//	for explicit wait we have to just create a object of WebDriverWaitclass then use the expectedcondition class methods
+//	WebDriverWait wait=new WebDriverWait(driver, 20);
+//	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@class='adminWrap active']"))).click();
+	
+	
 
 	// Wait------------------------------------------
 	public static void waitForElementvisible(WebDriver driver, By locator) {
@@ -108,9 +114,9 @@ public class Common extends TestBase{
 				.pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
 	}
 
-	public static String waitForPageTitle(WebDriver driver, String title) {
+	public static String waitForPageTitle(WebDriver driver, String Expectedtitle) {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.titleContains(title));
+		wait.until(ExpectedConditions.titleContains(Expectedtitle));
 		return driver.getTitle();
 	}
 
@@ -280,7 +286,7 @@ public class Common extends TestBase{
 	//https://www.seleniumeasy.com/selenium-tutorials/working-with-ajax-or-jquery-auto-complete-text-box-using-webdriver
 		public static void selectOptionWithText(String textToSelect , By AutoCompletelistbox) {
 			try {
-				                 //WebElement autoOptions = driver.findElement(By.id("AutoComplete_listbox"));
+				       //WebElement autoOptions = driver.findElement(By.id("AutoComplete_listbox"));
 				//By AutoCompletelistbox=By.id("AutoComplete_listbox");
 				Common.waitForElementvisible(driver, AutoCompletelistbox);
 				                //wait.until(ExpectedConditions.visibilityOf(autoOptions));
@@ -447,7 +453,7 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 		String pageText=js.executeScript("return document.documentElement.innerText;").toString(); 
 		return pageText;
 	}
-	
+	//Below method is working fine
 	public static void scrollPageDownByJS()
 	{
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
@@ -550,12 +556,11 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 		} catch (Exception e) {
 			return false;
 		}
-		
 	}
-	
-	public boolean isElementPresent(By by) {
+	//https://medium.com/automation-reference/iselementpresent-8becc97c2265
+	public static boolean isElementPresent(By by) {
 		  try {
-		    driver.findElement(by);
+		    driver.findElements(by);
 		    return true;
 		  }
 		catch (org.openqa.selenium.NoSuchElementException e) {
@@ -564,16 +569,37 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 		}
 
 	
-	public static boolean isElementPresent(WebElement element)
-	{
-		try {
-			element.isDisplayed();
-			return true;
-		} catch (org.openqa.selenium.NoSuchElementException e) {
-			return false;
-		}
+	/**
+	* If a element is present, returns true, else return false
+	* @param WebElement whose presence is being checked
+	* @return true if webElement is present, else false
+	*/
+	public static boolean isElementPresent(WebElement webelement) {
+	  boolean exists = false;
+	  try {
+	    webelement.getTagName();
+	    exists = true;
+	  } catch (NoSuchElementException e) {
+	    // nothing to do.
+	  }
+	  return exists;
 	}
 	
+	
+	
+	
+	
+	public static boolean isElementPresentUsingSize(By by)
+	{
+		
+			int size=driver.findElements(by).size();
+			if (size==0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
 
 	private static void clear(WebElement element) throws Exception
 	{
