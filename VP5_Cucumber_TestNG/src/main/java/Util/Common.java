@@ -43,7 +43,7 @@ public class Common extends TestBase{
 	
 	MyWait mywaito=new MyWait();
 	
-	//13 june 2020
+
 	// Action ------------------------------------------
 	public static void action(WebDriver driver, WebElement locator) {
 		Actions act = new Actions(driver);
