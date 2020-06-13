@@ -2,7 +2,7 @@ package Util;
 import java.io.FileInputStream;
 import java.util.Properties;
 public class Utility extends TestBase {
-//Letest VP 13 JUne 2020
+//Letest VP 13 JUne 2020 2
 // if you do not want static method then you need to ini these files in test base class like  below & 
 	//load file on test base page
 	//	public static Properties config = new Properties(); // reading property file
