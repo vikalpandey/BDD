@@ -12,7 +12,8 @@ public class Dashboard extends TestBase {
 	
 	// 1= validate emp current url
 	public void validate_emp_dashboard_currenturl(){
-	String expeted_emp_dashboardurl = "http://10.12.0.94:82/DashBoard/Employee#";
+	String expeted_emp_dashboardurl = "http://avitusnetdev.incedoinc.com:82/DashBoard/Employee#";
+	log.info("method started validate_emp_dashboard_currenturl");
 	String actual_emp_dashboardurl = driver.getCurrentUrl();
 	System.out.println("actual_emp_dashboardurl = " + actual_emp_dashboardurl);
 	Assert.assertEquals(actual_emp_dashboardurl, expeted_emp_dashboardurl,

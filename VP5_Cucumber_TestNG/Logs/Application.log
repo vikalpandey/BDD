@@ -1,6 +1,5 @@
-INFO    2020-05-24 15:57:45,117 [main] Util.TestBase  - log.info url filled
-INFO    2020-05-24 15:57:45,164 [main] Util.TestBase  - log.info startedin test base class
-ERROR   2020-05-24 15:57:45,164 [main] Util.TestBase  - log.error started in test base class
-INFO    2020-05-24 15:58:31,664 [main] Util.TestBase  - [[ChromeDriver: chrome on XP (5df16ea2f2f1a59e9c1b838eb38ef88e)] -> xpath: //input[@value='LOGIN']]
-INFO    2020-05-24 15:58:31,665 [main] Util.TestBase  - sign in by ca1 done 
-INFO    2020-05-24 15:58:31,916 [main] Util.TestBase  - log.info in test class
+INFO    2020-06-19 15:28:40,338 [main] Util.TestBase  - log.info started in test base class
+ERROR   2020-06-19 15:28:40,343 [main] Util.TestBase  - log.error started in test base class
+INFO    2020-06-19 15:28:40,349 [main] Util.TestBase  - Today date = Fri Jun 19 15:28:40 IST 2020
+INFO    2020-06-19 15:28:51,546 [main] Util.TestBase  - log.info url filled
+INFO    2020-06-19 15:29:23,491 [main] Util.TestBase  - driver.quit Done 

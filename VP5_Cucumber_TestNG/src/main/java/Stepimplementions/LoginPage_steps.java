@@ -58,10 +58,12 @@ public class LoginPage_steps extends TestBase {
 		WebElement userName = driver.findElement(By.xpath(Util.Utility.fetchlocatorvalue("login_username_xpath"))); 	// Enter User Name
 		userName.clear();
 		userName.sendKeys("emp1@gmail.com");
+		log.info("username filled as emp1@gmail.com");
 		// Enter Password
 		WebElement passWord = driver.findElement(By.xpath(Util.Utility.fetchlocatorvalue("login_password_xpath")));
 		passWord.clear();
 		passWord.sendKeys("User@1234");
+		log.info("password filled ");
 		// Click on the Sign In Button
 		WebElement signin = driver.findElement(By.xpath(Util.Utility.fetchlocatorvalue("login_loginbutton_xpath")));
 		signin.click();

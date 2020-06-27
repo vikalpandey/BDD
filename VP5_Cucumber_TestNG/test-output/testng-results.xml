@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="35203" started-at="2020-06-12T18:10:12Z" finished-at="2020-06-12T18:10:47Z">
+  <suite name="Default suite" duration-ms="52405" started-at="2020-06-19T09:58:31Z" finished-at="2020-06-19T09:59:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="35203" started-at="2020-06-12T18:10:12Z" finished-at="2020-06-12T18:10:47Z">
-      <class name="Stepimplementions.Learning.ActionAPI_Mouse_Keyboard">
-        <test-method status="PASS" signature="Testmethod()[pri:0, instance:Stepimplementions.Learning.ActionAPI_Mouse_Keyboard@6ddf90b0]" name="Testmethod" duration-ms="35163" started-at="2020-06-12T18:10:12Z" finished-at="2020-06-12T18:10:47Z">
+    <test name="Default test" duration-ms="52405" started-at="2020-06-19T09:58:31Z" finished-at="2020-06-19T09:59:23Z">
+      <class name="Stepimplementions.Learning.Calendar_Handling">
+        <test-method status="PASS" signature="Testmethod()[pri:0, instance:Stepimplementions.Learning.Calendar_Handling@3701eaf6]" name="Testmethod" duration-ms="52344" started-at="2020-06-19T09:58:31Z" finished-at="2020-06-19T09:59:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Testmethod -->
-      </class> <!-- Stepimplementions.Learning.ActionAPI_Mouse_Keyboard -->
+      </class> <!-- Stepimplementions.Learning.Calendar_Handling -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

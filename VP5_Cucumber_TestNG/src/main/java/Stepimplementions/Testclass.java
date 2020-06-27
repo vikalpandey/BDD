@@ -44,7 +44,8 @@ public class Testclass extends TestBase {
 	public void Testmethod() throws Exception {
 		TestBase.initialization();		
 		try {
-			lpobj.loginwith_ca1();
+			
+			lpobj.loginwith_emp1();
 			log.info("log.info in test class");
 			
 			
