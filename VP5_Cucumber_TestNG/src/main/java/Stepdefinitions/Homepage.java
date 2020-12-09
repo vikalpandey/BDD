@@ -13,6 +13,7 @@ public class Homepage extends TestBase {
 
 	Homepage_steps hsobj=new Homepage_steps();
 	
+	//Shortcut for import all cucumber @given @when use =       ctrl+shift+o
 	@Given("^User is present on login page of avituent website$")
 	public void user_is_present_on_login_page_of_avituent_website() throws Throwable {
 	   //Assert.assertEquals(driver.getTitle(), "Avitus Net Login");

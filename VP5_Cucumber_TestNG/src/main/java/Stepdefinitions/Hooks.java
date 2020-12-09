@@ -16,12 +16,12 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 public class Hooks extends TestBase {
+	
 
 	@Before
-	public void initDriver() throws Exception {
+	public void initDriver(Scenario scenario) throws Exception {
 		System.out.println("hooks Before method");
 		TestBase.initialization();
-		
 		// driver.manage().deleteAllCookies();
 
 	}
@@ -29,23 +29,30 @@ public class Hooks extends TestBase {
 	@After
 
 	public void afterScenario(Scenario scenario) throws Exception {
-		
+		//scenario class
 		if (scenario.isFailed()) {
+			// Take a screenshot..
 			try {
 				String src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+				// Add it in the report.
 				Reporter.addScreenCaptureFromPath("data:image/jpeg;base64," + src);
 
 			} catch (WebDriverException e) {
 				e.getMessage();
 			}
 		}
+//we can capture screen shot using byte also 
+//https://medium.com/@priyank.it/cucumber-report-taking-screenshot-embedding-inside-47d6d3c723bc
+
+		
 		
 		
 		//------------------------
 
 		System.out.println("Hooks after method");
 		try {
-			driver.quit();
+			//driver.quit();
+			TestBase.quit();
 		} catch (Exception e) {
 			System.out.println("some exception occurred while quitting the browser= "+e);
 		}
@@ -68,6 +75,12 @@ public class Hooks extends TestBase {
 	
 	}
 
+//Tagged hooks	
+//	@Before("prod")
+//	@After("prod")  
+// you need to mentons same in fearure file as welll	
+	
+	
 	
 //	public void TearDown() {
 //		System.out.println("Hooks after method");

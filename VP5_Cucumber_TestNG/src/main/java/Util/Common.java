@@ -16,6 +16,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -465,13 +466,13 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 	public static void scrollUpToElementByJS(WebDriver driver, WebElement element) // keep scrolling untill the element is visible 
 	{
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
-		js.executeScript("arguments[0].scrollIntoView(True);",element);
+		js.executeScript("arguments[0].scrollIntoView();",element);
 	}
 	
 	/*
 	 * This method is used to move to element using java scrpit executor  on the page.
 	 */
-	public WebElement moveToElement(WebDriver driver, WebElement element) throws Exception {
+	public static WebElement moveToElement(WebDriver driver, WebElement element) throws Exception {
 		try {
 			Thread.sleep(500);
 			((JavascriptExecutor) driver).executeScript(
@@ -527,6 +528,34 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 			System.out.println("VP= some exception is comming in clicking the element and exceptin is =" +e);
 		}
 	}
+	
+	//http://www.appliedselenium.com/2019/10/stale-element-reference-exception-in-selenium/
+    //method to overcome stale element reference exception
+    public static void retryClickElement(By locator, WebDriver driver) {
+        //variable to count the attempts
+        int attempts = 0;
+        //number of times this code should get executed 
+        while(attempts < 2) {
+            try {
+                //wait explicitly till desired element is visible and clickable
+                WebDriverWait wait = new WebDriverWait(driver, 30L);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+                wait.until(ExpectedConditions.elementToBeClickable(locator));
+                
+                //click on the locator once it is found and terminate the loop
+                driver.findElement(locator).click();
+                break;
+            } catch(StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+    }
+	
+	
+	
+	
+	
+	
 	
 //	 public boolean isElementDisplayed(By element) {
 //	 try {
@@ -591,7 +620,6 @@ public static void selectOptionWithIndex2(int indexToSelect, By locator_AutoComp
 	
 	public static boolean isElementPresentUsingSize(By by)
 	{
-		
 			int size=driver.findElements(by).size();
 			if (size==0) {
 				return false;

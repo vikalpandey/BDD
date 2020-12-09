@@ -1,5 +1,4 @@
-INFO    2020-06-27 14:17:53,404 [main] Util.TestBase  - log.info started in test base class
-ERROR   2020-06-27 14:17:53,406 [main] Util.TestBase  - log.error started in test base class
-INFO    2020-06-27 14:17:53,413 [main] Util.TestBase  - Today date = Sat Jun 27 14:17:53 IST 2020
-INFO    2020-06-27 14:17:58,710 [main] Util.TestBase  - log.info url filled
-INFO    2020-06-27 14:18:16,493 [main] Util.TestBase  - driver.quit Done 
+INFO    2020-12-09 20:51:49,023 [main] Util.TestBase  - log.info started in test base class
+ERROR   2020-12-09 20:51:49,026 [main] Util.TestBase  - log.error started in test base class
+INFO    2020-12-09 20:51:49,031 [main] Util.TestBase  - Today date = Wed Dec 09 20:51:49 IST 2020
+INFO    2020-12-09 20:51:49,031 [main] Util.TestBase  - log.info url filled

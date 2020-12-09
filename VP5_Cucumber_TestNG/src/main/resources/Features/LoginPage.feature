@@ -1,5 +1,5 @@
 Feature: Validate the login page functionality of each type of user
-@vikal
+
 Scenario: Validate the Login functionality via employee type users 
 Given login with employee user 
 Then User should be on employee dashboard

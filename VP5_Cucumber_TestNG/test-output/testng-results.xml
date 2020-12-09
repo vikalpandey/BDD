@@ -2,16 +2,34 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="34804" started-at="2020-06-27T08:47:41Z" finished-at="2020-06-27T08:48:16Z">
+  <suite name="Default suite" duration-ms="38489" started-at="2020-12-09T15:19:48Z" finished-at="2020-12-09T15:20:27Z">
     <groups>
+      <group name="cucumber">
+        <method signature="TestRunner.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:Runner.TestRunner@3159c4b8]" name="feature" class="Runner.TestRunner"/>
+      </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="34804" started-at="2020-06-27T08:47:41Z" finished-at="2020-06-27T08:48:16Z">
-      <class name="Stepimplementions.Learning.Calender_Jquery">
-        <test-method status="PASS" signature="Testmethod()[pri:0, instance:Stepimplementions.Learning.Calender_Jquery@43814d18]" name="Testmethod" duration-ms="34739" started-at="2020-06-27T08:47:41Z" finished-at="2020-06-27T08:48:16Z">
+    <test name="Default test" duration-ms="38489" started-at="2020-12-09T15:19:48Z" finished-at="2020-12-09T15:20:27Z">
+      <class name="Runner.TestRunner">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:Runner.TestRunner@3159c4b8]" name="setUpClass" is-config="true" duration-ms="636" started-at="2020-12-09T15:19:48Z" finished-at="2020-12-09T15:19:49Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Testmethod -->
-      </class> <!-- Stepimplementions.Learning.Calender_Jquery -->
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:Runner.TestRunner@3159c4b8]" name="feature" duration-ms="36550" started-at="2020-12-09T15:19:49Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2020-12-09T15:20:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Validate incedo page and do data driven testing]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:Runner.TestRunner@3159c4b8]" name="tearDownClass" is-config="true" duration-ms="1036" started-at="2020-12-09T15:20:26Z" finished-at="2020-12-09T15:20:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- Runner.TestRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

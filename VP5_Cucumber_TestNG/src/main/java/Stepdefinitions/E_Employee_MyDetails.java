@@ -23,6 +23,7 @@ public class E_Employee_MyDetails extends TestBase {
 	Goto go =new Goto();
 	E_Employee_MyDetails_steps mydetailsobj=new E_Employee_MyDetails_steps();
 	
+	//Shortcut for import all cucumber @given @when use =       ctrl+shift+o
 	@Given("^Employee login with emp(\\d+) user$")
 	public void employee_login_with_emp_user(int arg1) throws Throwable {
 		loginpobj.loginwith_emp1();

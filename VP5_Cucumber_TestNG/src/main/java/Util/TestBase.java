@@ -2,6 +2,8 @@ package Util;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -12,18 +14,23 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 
+//If webdriver is static then every page class will refer same driver but when we need to run parelel test then static creates the problem
+//Ravi login  vedio of Rahul arora after 13 min 
+//https://www.udemy.com/course/selenium-training/learn/lecture/13482908#notes
 
 public class TestBase {
 
-	public static WebDriver driver;
+	public static WebDriver driver =null ;
 //	public static Chromedriver driver1;//when we write like this then we need to change the driver variable as per browser basis 
 //	public static FirefoxDriver driver2;//solution is here we have create a single driver variable so that user need not to change driver each time for difference browser
 	//So this is the reason to user use webdriver driver=new chromedriver();
@@ -35,10 +42,39 @@ public class TestBase {
 
 
 	public static void initialization() throws Exception {
+		
+		if(driver == null){
 		System.out.println("inside initialization method ");
 		if (Utility.fetchpropertyvalue("browserName").toString().equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
-			driver = new ChromeDriver();
+			
+			DesiredCapabilities handlSSLErr =new DesiredCapabilities(); 
+			handlSSLErr.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+			handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+// ******start***Code for chrome options = https://www.udemy.com/course/selenium-automation-architect-tutorials/learn/lecture/8746730#overview
+			//https://www.guru99.com/chrome-options-desiredcapabilities.html
+	    	Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("profile.default_content_setting_values.notifications", 2);
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("prefs", prefs);
+			options.addArguments("--disable-extensions");
+			options.addArguments("--disable-infobars");
+			//for headless browser use below 1 line code //rule 1=chrome version should be > 60 on windows, 
+			//rule 2=set window size otherwise exception will throw bcoz by default it open in mobile size window
+			//options.addArguments("window-size=1400,800"); 
+			//options.addArguments("headless");
+			options.merge(handlSSLErr);
+			
+//			options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+//			options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+            driver = new ChromeDriver(options);
+           
+			
+//************end 			
+			
+		//	driver = new ChromeDriver();
 		} else if (Utility.fetchpropertyvalue("browserName").toString().equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver", "./Driver/geckodriver.exe");
 			driver = new FirefoxDriver();
@@ -62,7 +98,7 @@ public class TestBase {
 			driver = new ChromeDriver();
 		}
 		
-		
+		}
 		
 		
 		driver.manage().window().maximize();
@@ -70,15 +106,19 @@ public class TestBase {
 		        //when use timeout,page navigation should be executed under the control of try-catch clauses that catch the TimeoutException.
 		//driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 		        // implicit wait is only for checking the presence of element
-		driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
-		driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 		       //set the amount of time to wait for an asynchronous script to finish execution before throwing any error
 		log_method();
 		
-		driver.get(Utility.fetchpropertyvalue("url").toString());// utility
+		//driver.get(Utility.fetchpropertyvalue("url").toString());// utility
 		log.info("log.info url filled");
 		System.out.println("Opening the Login Page url");
 		// method return the object so we convert it to String
+		
+		
+		
+		
 	
 	}
 	public static void log_method()
@@ -101,6 +141,11 @@ public class TestBase {
 		
 	}
 
-	
+	public static void quit()
+	{
+		System.out.println("Test base class quit method");
+		driver.quit();
+		driver =null;
+	}
 	
 }
