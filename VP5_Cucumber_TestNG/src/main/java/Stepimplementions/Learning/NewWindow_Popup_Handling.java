@@ -1,9 +1,6 @@
 package Stepimplementions.Learning;
 
 
-	
-	
-
 	import static org.testng.Assert.assertEquals;
 	import static org.testng.Assert.assertTrue;
 
@@ -59,6 +56,7 @@ import Util.Common;
 
 				System.out.println("--genrating window id from 1st window");
 				Set<String> winids = driver.getWindowHandles();
+				
 				System.out.println("winids="+ winids);
 				Iterator<String> iterate=winids.iterator();
 				String first_window =iterate.next();

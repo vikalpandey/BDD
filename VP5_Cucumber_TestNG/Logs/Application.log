@@ -1,4 +1,4 @@
-INFO    2020-12-09 20:51:49,023 [main] Util.TestBase  - log.info started in test base class
-ERROR   2020-12-09 20:51:49,026 [main] Util.TestBase  - log.error started in test base class
-INFO    2020-12-09 20:51:49,031 [main] Util.TestBase  - Today date = Wed Dec 09 20:51:49 IST 2020
-INFO    2020-12-09 20:51:49,031 [main] Util.TestBase  - log.info url filled
+INFO    2020-12-20 23:59:08,135 [main] com.qa.utils.TestBase  - log.info started in test base class
+ERROR   2020-12-20 23:59:08,140 [main] com.qa.utils.TestBase  - log.error started in test base class
+INFO    2020-12-20 23:59:08,335 [main] com.qa.utils.TestBase  - Today date = Sun Dec 20 23:59:08 IST 2020
+INFO    2020-12-20 23:59:08,335 [main] com.qa.utils.TestBase  - log.info url filled

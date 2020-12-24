@@ -20,7 +20,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<!-- <scope>test</scope>   it will test when we write test in src/test/java folder-->
 		</dependency>
 
 		<dependency>
