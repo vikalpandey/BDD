@@ -11,11 +11,12 @@ public class A1_Unary_opeartor {
 //		int o=10;
 //		int p=++o;
 //		System.out.println(p);
-		System.out.println("- concept-https://www.youtube.com/watch?v=Ep_Qkcailrw-----------");
+		
+//		System.out.println("- concept-https://www.youtube.com/watch?v=Ep_Qkcailrw-----------");
 		
 		int g=10;
 		int h=  ++g + g++;
-		System.out.println(g + " " +h);
+		System.out.println("value of g and h = "+g + " " +h);  // 12, 22
 		//4 6
 		System.out.println("-----++a will not work for constant--------");
 		//final int a=10;

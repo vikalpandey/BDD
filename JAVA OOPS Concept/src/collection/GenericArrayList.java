@@ -8,7 +8,7 @@ public class GenericArrayList {
 	public static void main(String[] args) {
 		
 		//ArrayList list=new ArrayList();// this is ok import java.util.ArrayList;
-		//List list0=new ArrayList();// this is also ok  lso define data type but not permitive data types 
+		//List list0=new ArrayList();// this is also ok  also define data type but not permitive data types 
        // collection does not work on premitive data type (int,char..) it works on classes and object only 
 		//so we need to define class name only
 		
@@ -26,6 +26,7 @@ public class GenericArrayList {
 		int i=list.get(0); // now here you are not typecasting but in arraylist class we need to type cast
 		System.out.println(i);
 		
+		ArrayList<Integer> marksheet=new ArrayList<Integer>();
 		
 		
 		

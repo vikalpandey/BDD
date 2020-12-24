@@ -6,6 +6,7 @@ public class Arraylist {
 	public static void main(String[] args) {
 		
 		ArrayList list=new ArrayList();   //import java.util.ArrayList;
+		System.out.println("hi ");
 		list.add(10);
 		list.add(10.5);
 		list.add('a');
@@ -41,7 +42,10 @@ public class Arraylist {
 		{
 			System.out.println(itr.next());
 		}
+	System.out.println("new lambda ,,,,,,,,,,,,,,,,,,,,,,,,");
+		list.stream().forEach(ele-> System.out.println(ele));
 	
+		
 //*****Drawback 
 		System.out.println("Drwaback store  value in a valriable---------------");
 		System.out.println(list.get(0));//		i want to store this value in a valriable 
