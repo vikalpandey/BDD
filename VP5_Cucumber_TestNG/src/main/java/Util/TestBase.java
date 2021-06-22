@@ -61,6 +61,15 @@ public class TestBase {
 			options.setExperimentalOption("prefs", prefs);
 			options.addArguments("--disable-extensions");
 			options.addArguments("--disable-infobars");
+			
+//		       options.addArguments("start-maximized");
+//	            options.addArguments("enable-automation");
+//	            options.addArguments("--no-sandbox");
+//	            options.addArguments("--disable-infobars");
+//	            options.addArguments("--disable-dev-shm-usage");
+//	            options.addArguments("--disable-browser-side-navigation");
+//	            options.addArguments("--disable-gpu");
+			
 			//for headless browser use below 1 line code //rule 1=chrome version should be > 60 on windows, 
 			//rule 2=set window size otherwise exception will throw bcoz by default it open in mobile size window
 			//options.addArguments("window-size=1400,800"); 

@@ -45,32 +45,6 @@ public class ActionAPI_Mouse_Keyboard extends TestBase{
 					
 
 					
-
-					
-					
-
-					
-					
-					
-					
-				
-					
-					
-					
-					
-					
-					
-					
-
-					
-
-					
-
-					
-			
-					
-					
-					
 					
 					
 				
