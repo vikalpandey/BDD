@@ -59,10 +59,35 @@ public class C_String_Comparison {
 		 StringBuffer stringreverse=sf.reverse();
 		 System.out.println("string reverse using string buffer classs= "+stringreverse);
 		 
+		System.out.println("---------------------------");
+		String buggyCode_v_1="Buggy Code";
+		String buggyCode_v_2="Buggy Code";
+		if(buggyCode_v_1==buggyCode_v_2)
+		{
+			System.out.println("first set of string are equal");
+		}
 		
+		String betterCode_v_1=new String("Better Code");
+		String betterCode_v_2=new String("Better Code");
+		
+		if(betterCode_v_1==betterCode_v_2)
+		{
+			System.out.println("second set of string are equal");
+		}
 		 
-		 
-		 
+		System.out.println("#####1---------------------------");
+		int num1 = 128;
+		int num2 = 128;
+		if (num1 == num2) {
+			System.out.println("num1 == num2");
+		} else {
+			System.out.println("num1 != num2");
+		}  	
+	
+		System.out.println("#####2---------------------------");
+		System.out.println(0.1*3 == 0.3);
+	    System.out.println(0.1*2 == 0.2);
+
 		
 	}
 
